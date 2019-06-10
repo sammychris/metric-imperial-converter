@@ -5,6 +5,8 @@ var bodyParser  = require('body-parser');
 var expect      = require('chai').expect;
 var cors        = require('cors');
 
+require('dotenv').config(); // loading this environmental variables...
+
 var apiRoutes         = require('./routes/api.js');
 var fccTestingRoutes  = require('./routes/fcctesting.js');
 var runner            = require('./test-runner');
@@ -36,7 +38,7 @@ app.use(function(req, res, next) {
     .type('text')
     .send('Not Found');
 });
-
+console.log(process.env.PORT)
 //Start our server and tests!
 app.listen(process.env.PORT || 3000, function () {
   console.log("Listening on port " + process.env.PORT);
